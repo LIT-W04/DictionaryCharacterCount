@@ -1,0 +1,30 @@
+﻿@model WebApplication11.Models.HomePageViewModel
+
+<div class="row">
+    <form method="get" action="/home/index">
+        <div class="col-md-10">
+            <input type="text" value="@Model.Text" name="text" placeholder="Enter Text" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success btn-block">Submit</button>
+        </div>
+    </form>
+</div>
+
+@if (Model.CharacterCounts != null)
+{
+    <ul>
+        @foreach (KeyValuePair<char, int> counts in Model.CharacterCounts)
+        {
+            if (counts.Value == 1)
+            {
+                <li>There is 1 @counts.Key</li>
+            }
+            else
+            {
+                <li>There are @counts.Value @counts.Key's</li>
+            }
+
+        }
+    </ul>
+}
